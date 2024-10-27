@@ -1,0 +1,6 @@
+{
+  "[liquid]": {
+    "editor.defaultFormatter": "Shopify.theme-check-vscode" // Or the extension ID of the Liquid formatter you're using
+  },
+  "editor.formatOnSave": true
+}
