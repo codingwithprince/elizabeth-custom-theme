@@ -1,18 +1,51 @@
-<h2></h2>
-<h1>{{ section.settings.header-404-text }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+<h1 class="font-bold text-[30px]">{{ section.settings.header-404-text }}</h1>
+<div>
+  <p>{{ section.settings.sub-text }}</p>
+</div>
+
+{% if section.settings.button-url == blank %}
+  {% assign button_url = shop.url %}
+{% else %}
+  {% assign button_url = section.settings.button-url %}
+{% endif %}
+
+<a href="{{ button_url }}" class="bg-green-500 text-white font-semibold px-5 py-3 rounded-md mt-10 text-lg" href="#">
+  {{ section.settings.button-label }}
+</a>
 
 {% schema %}
 {
-  "name": "404 Title",
+  "name": "Template 404",
+  "tag": "section",
+  "class": "relative flex flex-col items-center justify-center h-screen py-0",
   "settings": [
     {
       "type": "text",
       "id": "header-404-text",
-      "default": "Page Not Found",
+      "default": "404",
       "label": "404 Text",
       "info": "This is a 404 message"
+    },
+    {
+      "type": "text",
+      "id": "sub-text",
+      "default": "Page not found",
+      "label": "Subtext",
+      "info": "This is a subtext message"
+    },
+    {
+      "type": "text",
+      "id": "button-label",
+      "default": "Back to homepage",
+      "label": "Button label",
+      "info": "This is a button label"
+    },
+    {
+      "type": "url",
+      "id": "button-url",
+      "label": "Button Url",
+      "info": "This is button url"
     }
   ]
 }
-{% endschema %} 
+{% endschema %}
